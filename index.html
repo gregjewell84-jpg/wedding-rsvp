@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP — Alison & Greg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #EDE7DA;
+    --cream-light: #F4EFE6;
+    --red: #8B2635;
+    --red-dark: #6E1C28;
+    --black: #1c1c1c;
+    --mid: #666;
+    --light: #999;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #C8BFB0;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, #D2C9BA 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 90%, #BDB5A6 0%, transparent 55%);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 16px 80px;
+  }
+
+  /* ── ARCH CARD ── */
+  .arch-card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--cream);
+    border-radius: 230px 230px 0 0;
+    padding: 64px 44px 52px;
+    position: relative;
+    box-shadow:
+      0 2px 4px rgba(0,0,0,0.06),
+      0 10px 30px rgba(0,0,0,0.13),
+      0 30px 70px rgba(0,0,0,0.09);
+    animation: fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 26px;
+    padding-top: 16px;
+  }
+
+  .pre-title {
+    display: block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  .script-name {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(58px, 14vw, 78px);
+    color: var(--red);
+    line-height: 1.05;
+  }
+
+  .script-amp {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(46px, 11vw, 62px);
+    color: var(--red);
+    line-height: 0.95;
+    margin: 2px 0;
+  }
+
+  .date-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .date-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .date-circle {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .year-row {
+    margin-top: 5px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .venue-block {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  .tagline {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    color: var(--red);
+    margin-top: 12px;
+  }
+
+  /* ── DIVIDER ── */
+  .div {
+    display: flex; align-items: center; gap: 10px;
+    margin: 22px 0;
+  }
+  .div-line { flex:1; height:1px; background: rgba(0,0,0,0.12); }
+  .div-dot  { width:5px; height:5px; border-radius:50%; background: var(--red); flex-shrink:0; }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  /* ── GUEST BLOCK ── */
+  .guest-block { margin-bottom: 18px; }
+
+  .guest-label {
+    display: block;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 10px;
+  }
+
+  .field { margin-bottom: 11px; }
+
+  .field-label {
+    display: block;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 5px;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1.5px solid rgba(0,0,0,0.16);
+    background: rgba(255,255,255,0.55);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--black);
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  input[type="text"]:focus, textarea:focus {
+    border-color: var(--red);
+    background: rgba(255,255,255,0.9);
+  }
+  input[type="text"]::placeholder, textarea::placeholder { color: #bbb; }
+  textarea { resize: vertical; min-height: 62px; }
+
+  /* ── TOGGLES ── */
+  .toggle { display: flex; }
+  .toggle input[type="radio"] { display: none; }
+  .toggle label {
+    flex: 1;
+    text-align: center;
+    padding: 9px 4px;
+    border: 1.5px solid rgba(0,0,0,0.18);
+    background: rgba(255,255,255,0.5);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--black);
+    transition: all 0.13s;
+    margin: 0;
+    user-select: none;
+    line-height: 1.4;
+  }
+  .toggle label:first-of-type { border-right-width: 0.75px; }
+  .toggle label:last-of-type  { border-left-width: 0.75px; }
+  .toggle input[type="radio"]:checked + label {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+  }
+
+  /* ── DETAILS SECTION ── */
+  .details-grid {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .detail-item { margin-bottom: 14px; }
+  .detail-heading {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+  .detail-body {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ── HOTEL ── */
+  .hotel-box {
+    border: 1.5px solid rgba(139,38,53,0.25);
+    background: rgba(139,38,53,0.04);
+    padding: 15px 17px;
+    margin-bottom: 20px;
+  }
+  .hotel-eyebrow {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 5px;
+  }
+  .hotel-body {
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .hotel-code {
+    display: inline-block;
+    margin-top: 9px;
+    border: 1px dashed var(--red);
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--red);
+  }
+
+  /* ── BRUNCH ── */
+  .brunch-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 9px;
+  }
+  .brunch-name {
+    flex: 1;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--black);
+  }
+  .brunch-row .toggle { width: 172px; flex-shrink: 0; }
+
+  /* ── SUBMIT ── */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 6px;
+  }
+  .submit-btn:hover { background: var(--red-dark); }
+  .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled { opacity: 0.6; cursor: default; }
+
+  /* ── SUCCESS ── */
+  #success-screen {
+    display: none;
+    text-align: center;
+    padding: 30px 0 10px;
+  }
+  #success-screen .script-name {
+    font-size: 60px;
+    margin-bottom: 14px;
+  }
+  #success-screen p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+  #success-screen .tiny {
+    margin-top: 22px;
+    font-size: 8.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #bbb;
+  }
+
+  @media (max-width: 500px) {
+    .arch-card { border-radius: 180px 180px 0 0; padding: 52px 28px 44px; }
+    .brunch-row { flex-direction: column; align-items: flex-start; gap: 7px; }
+    .brunch-row .toggle { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="arch-card">
+
+
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="pre-title">The Wedding Reception of</span>
+    <span class="script-name">Alison</span>
+    <span class="script-amp">&amp;</span>
+    <span class="script-name">Greg</span>
+
+    <p style="font-size:9px; font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:var(--mid); margin-top:14px; margin-bottom:0;">Join us as we celebrate</p>
+
+    <div class="date-row">
+      <span class="date-label">October</span>
+      <div class="date-circle">10</div>
+      <span class="date-label">2026</span>
+    </div>
+    <div class="year-row" style="letter-spacing:2px; font-weight:300; color:var(--mid); font-size:12px; margin-top:6px;">4:00 pm — 2:00 am</div>
+
+    <p class="venue-block">
+      The Hoxton, Holborn · London · WC1V 7BD
+    </p>
+  </div>
+
+  <!-- FORM -->
+  <form id="rsvp-form" novalidate>
+
+    <div class="div"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
+
+    <!-- DETAILS -->
+    <div class="details-grid">
+      <div class="sec-title" style="margin-bottom:14px;">Details</div>
+      <div class="detail-item">
+        <div class="detail-heading">Dress</div>
+        <div class="detail-body">Cocktail / Party Attire</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-heading">Reception</div>
+        <div class="detail-body">Prepare for an evening of cocktails,<br>food and dancing at The Apartment</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-heading">Stay</div>
+        <div class="detail-body">For those looking to stay at the hotel, please feel free to use the discounted code below when booking online.</div>
+      </div>
+      <div class="detail-item" style="margin-bottom:0;">
+        <div class="detail-heading">The Morning After</div>
+        <div class="detail-body">Optional private brunch for those staying over —<br>your hangover cure awaits</div>
+      </div>
+    </div>
+
+    <!-- HOTEL CODE -->
+    <div class="hotel-box" style="margin-top:16px; text-align:center;">
+      <div class="hotel-code" id="hotel-code-display" style="margin-top:0;">Code coming soon</div>
+    </div>
+
+
+
+    <div class="div"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
+
+    <!-- ARE YOU IN + PLEASE RESPOND -->
+    <div style="text-align:center; margin-bottom:20px;">
+      <span class="tagline" style="font-size:34px;">Are you in?</span>
+    </div>
+    <div class="sec-title">Please Respond</div>
+
+    <!-- GUEST 1 -->
+    <div class="guest-block">
+      <span class="guest-label">Guest One</span>
+      <div class="field">
+        <label class="field-label" for="g1-name">Full Name</label>
+        <input type="text" id="g1-name" name="g1_name" placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label class="field-label">Attending?</label>
+        <div class="toggle">
+          <input type="radio" name="g1_attending" id="g1-yes" value="yes">
+          <label for="g1-yes">Joyfully Accepts</label>
+          <input type="radio" name="g1_attending" id="g1-no" value="no">
+          <label for="g1-no">Regretfully Declines</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUEST 2 -->
+    <div class="guest-block">
+      <span class="guest-label">Guest Two (if applicable)</span>
+      <div class="field">
+        <label class="field-label" for="g2-name">Full Name</label>
+        <input type="text" id="g2-name" name="g2_name" placeholder="Leave blank if not applicable">
+      </div>
+      <div class="field">
+        <label class="field-label">Attending?</label>
+        <div class="toggle">
+          <input type="radio" name="g2_attending" id="g2-yes" value="yes">
+          <label for="g2-yes">Joyfully Accepts</label>
+          <input type="radio" name="g2_attending" id="g2-no" value="no">
+          <label for="g2-no">Regretfully Declines</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="div"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
+
+    <!-- MORNING AFTER -->
+    <div style="margin-bottom:22px;">
+      <div class="sec-title">The Morning After</div>
+      <p style="font-size:11px; font-weight:300; color:var(--mid); text-align:center; margin-bottom:16px; line-height:1.7;">
+        For those staying over, would you like to join for a private brunch?
+      </p>
+      <div class="brunch-row">
+        <span class="brunch-name">Guest One — Brunch?</span>
+        <div class="toggle">
+          <input type="radio" name="g1_brunch" id="g1b-yes" value="yes">
+          <label for="g1b-yes">Yes please</label>
+          <input type="radio" name="g1_brunch" id="g1b-no" value="no">
+          <label for="g1b-no">Not for me</label>
+        </div>
+      </div>
+      <div class="brunch-row">
+        <span class="brunch-name">Guest Two — Brunch?</span>
+        <div class="toggle">
+          <input type="radio" name="g2_brunch" id="g2b-yes" value="yes">
+          <label for="g2b-yes">Yes please</label>
+          <input type="radio" name="g2_brunch" id="g2b-no" value="no">
+          <label for="g2b-no">Not for me</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="div"><div class="div-line"></div><div class="div-dot"></div><div class="div-line"></div></div>
+
+    <!-- DIETARY -->
+    <div style="margin-bottom:26px;">
+      <div class="sec-title">Dietary Requirements</div>
+      <p style="font-size:10.5px; font-weight:300; color:var(--mid); text-align:center; margin-bottom:12px; line-height:1.7; font-style:italic;">Please note there is no sit down meal — food will be served informally throughout the evening.</p>
+      <label class="field-label" for="dietary">Any allergies or dietary needs? (optional)</label>
+      <textarea id="dietary" name="dietary" placeholder="e.g. vegetarian, nut allergy…"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Send My RSVP</button>
+
+  </form>
+
+  <!-- SUCCESS -->
+  <div id="success-screen">
+    <span class="script-name" style="font-size:64px; display:block; margin-bottom:12px;">Thank you!</span>
+    <p>Your RSVP has been received.<br>We can't wait to celebrate with you.</p>
+    <p class="tiny">Alison &amp; Greg · 10 · 10 · 2026</p>
+  </div>
+
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const inviteCode = params.get('invite') || 'direct';
+
+  // ── Update when you have the hotel code ──
+  const HOTEL_CODE = 'ADU1803';
+  if (HOTEL_CODE) document.getElementById('hotel-code-display').textContent = HOTEL_CODE;
+
+  document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.submit-btn');
+
+    if (!form.g1_name.value.trim()) { alert('Please enter your name.'); return; }
+    if (!form.g1_attending.value)   { alert('Please let us know if Guest One will be attending.'); return; }
+
+    const payload = {
+      invite_code:  inviteCode,
+      submitted_at: new Date().toISOString(),
+      g1_name:      form.g1_name.value.trim(),
+      g1_attending: form.g1_attending.value,
+      g1_brunch:    form.g1_brunch.value || '',
+      g2_name:      form.g2_name.value.trim(),
+      g2_attending: form.g2_attending.value || '',
+      g2_brunch:    form.g2_brunch.value || '',
+      dietary:      form.dietary.value.trim(),
+    };
+
+    // ── Paste your Google Apps Script Web App URL below ──────────────
+    const SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+    // ─────────────────────────────────────────────────────────────────
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // required for Apps Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      // no-cors means we can't read the response, but the data still lands
+      console.log('Submitted (no-cors):', err);
+    }
+
+    form.style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
