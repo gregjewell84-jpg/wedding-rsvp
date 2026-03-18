@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RSVP — Alison & Greg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+```
+:root {
+ --bg:       #cbc5bc;   /* outer taupe */
+ --card:     #ede9e3;   /* inner linen/cream */
+ --burgundy: #7a1a2e;   /* script + accent headings */
+ --charcoal: #2d2926;   /* body text */
+ --mid:      #5a5450;
+ --light:    #8a8480;
+ --rule:     rgba(122,26,46,0.18);
+ --dot:      #7a1a2e;
+}
+html { scroll-behavior: smooth; }
+body {
+ background: var(--bg);
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 40px 16px 60px;
+ font-family: 'Montserrat', sans-serif;
+}
+/* ── ARCH CARD ── */
+.card {
+ background: var(--card);
+ width: 100%;
+ max-width: 480px;
+ border-radius: 240px 240px 0 0;
+ padding: 64px 48px 56px;
+ text-align: center;
+}
+/* ── HERO ── */
+.hero-eyebrow {
+ font-size: 9px;
+ font-weight: 600;
+ letter-spacing: 0.28em;
+ text-transform: uppercase;
+ color: var(--burgundy);
+ margin-bottom: 20px;
+}
+.hero-script {
+ font-family: 'Great Vibes', cursive;
+ font-size: clamp(64px, 18vw, 90px);
+ color: var(--burgundy);
+ line-height: 1.05;
+}
+.hero-amp {
+ font-family: 'Great Vibes', cursive;
+ font-size: clamp(44px, 12vw, 64px);
+ color: var(--burgundy);
+ display: block;
+ line-height: 1.1;
+}
+.hero-sub {
+ font-size: 9px;
+ font-weight: 500;
+ letter-spacing: 0.28em;
+ text-transform: uppercase;
+ color: var(--charcoal);
+ margin-top: 22px;
+ margin-bottom: 20px;
+}
+/* ── DIVIDER ── */
+.divider {
+ display: flex;
+ align-items: center;
+ gap: 0;
+ margin: 24px 0;
+}
+.divider-line {
+ flex: 1;
+ height: 1px;
+ background: var(--rule);
+}
+.divider-dot {
+ width: 6px;
+ height: 6px;
+ border-radius: 50%;
+ background: var(--dot);
+ margin: 0 10px;
+ flex-shrink: 0;
+}
+/* ── EVENTS ── */
+.events-heading {
+ font-size: 9px;
+ font-weight: 600;
+ letter-spacing: 0.28em;
+ text-transform: uppercase;
+ color: var(--burgundy);
+ margin-bottom: 24px;
+}
+.event-item {
+ margin-bottom: 22px;
+}
+.event-item:last-child { margin-bottom: 0; }
+.event-name {
+ font-size: 10px;
+ font-weight: 600;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: var(--charcoal);
+ margin-bottom: 4px;
+}
+.event-detail {
+ font-size: 13.5px;
+ font-weight: 300;
+ color: var(--mid);
+ line-height: 1.6;
+ letter-spacing: 0.01em;
+}
+.event-tag {
+ display: inline-block;
+ margin-top: 5px;
+ font-size: 8px;
+ font-weight: 500;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ color: var(--burgundy);
+ border: 1px dashed var(--burgundy);
+ padding: 3px 10px;
+}
+/* ── HOTEL CODE ── */
+.code-block {
+ background: white;
+ border: 1px solid rgba(122,26,46,0.15);
+ padding: 16px 20px;
+ margin-top: 4px;
+}
+.code-label {
+ font-size: 8.5px;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: var(--light);
+ margin-bottom: 6px;
+}
+.code-value {
+ font-size: 10px;
+ font-weight: 600;
+ letter-spacing: 0.3em;
+ text-transform: uppercase;
+ color: var(--burgundy);
+ border: 1px dashed var(--burgundy);
+ display: inline-block;
+ padding: 5px 14px;
+}
+/* ── RSVP FORM ── */
+.rsvp-section { width: 100%; max-width: 480px; margin-top: 0; }
+.rsvp-card {
+ background: var(--card);
+ border-radius: 0 0 16px 16px;
+ padding: 8px 48px 56px;
+ text-align: center;
+}
+.rsvp-script {
+ font-family: 'Great Vibes', cursive;
+ font-size: clamp(48px, 13vw, 68px);
+ color: var(--burgundy);
+ line-height: 1.1;
+ margin-bottom: 4px;
+}
+.rsvp-sub {
+ font-size: 9px;
+ font-weight: 500;
+ letter-spacing: 0.28em;
+ text-transform: uppercase;
+ color: var(--charcoal);
+ margin-bottom: 32px;
+}
+.form-section-label {
+ font-size: 9px;
+ font-weight: 600;
+ letter-spacing: 0.22em;
+ text-transform: uppercase;
+ color: var(--charcoal);
+ margin-bottom: 14px;
+ margin-top: 28px;
+ text-align: left;
+}
+input[type="text"], textarea {
+ width: 100%;
+ background: transparent;
+ border: none;
+ border-bottom: 1px solid rgba(45,41,38,0.25);
+ color: var(--charcoal);
+ font-family: 'Montserrat', sans-serif;
+ font-size: 15px;
+ font-weight: 300;
+ padding: 10px 0;
+ outline: none;
+ transition: border-color 0.2s;
+ letter-spacing: 0.03em;
+ text-align: left;
+ border-radius: 0;
+}
+input[type="text"]::placeholder { color: rgba(45,41,38,0.3); }
+input[type="text"]:focus { border-bottom-color: var(--burgundy); }
+textarea {
+ resize: vertical;
+ min-height: 64px;
+ font-size: 14px;
+}
+textarea::placeholder { color: rgba(45,41,38,0.3); }
+textarea:focus { border-bottom-color: var(--burgundy); }
+/* Radio pills */
+.radio-group {
+ display: flex;
+ gap: 8px;
+ flex-wrap: wrap;
+ justify-content: center;
+ margin-top: 10px;
+}
+.radio-group input[type="radio"] { display: none; }
+.radio-group label {
+ font-size: 9px;
+ font-weight: 500;
+ letter-spacing: 0.16em;
+ text-transform: uppercase;
+ border: 1px solid rgba(45,41,38,0.22);
+ color: var(--mid);
+ padding: 10px 18px;
+ cursor: pointer;
+ transition: all 0.15s;
+ user-select: none;
+ background: transparent;
+}
+.radio-group input[type="radio"]:checked + label {
+ border-color: var(--burgundy);
+ background: var(--burgundy);
+ color: white;
+}
+.radio-group label:hover { border-color: var(--burgundy); color: var(--burgundy); }
+.field-row { margin-bottom: 16px; text-align: left; }
+.submit-btn {
+ display: block;
+ width: 100%;
+ margin-top: 36px;
+ background: var(--burgundy);
+ border: none;
+ color: white;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 500;
+ font-size: 9px;
+ letter-spacing: 0.28em;
+ text-transform: uppercase;
+ padding: 16px 24px;
+ cursor: pointer;
+ transition: opacity 0.2s;
+}
+.submit-btn:hover { opacity: 0.85; }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+/* ── THANK YOU ── */
+#thankyou {
+ display: none;
+ text-align: center;
+ padding: 20px 0 40px;
+}
+#thankyou.visible { display: block; }
+#thankyou .ty-script {
+ font-family: 'Great Vibes', cursive;
+ font-size: 60px;
+ color: var(--burgundy);
+ margin-bottom: 12px;
+}
+#thankyou p {
+ font-size: 13px;
+ font-weight: 300;
+ color: var(--mid);
+ line-height: 1.8;
+ letter-spacing: 0.03em;
+}
+/* ── FOOTER ── */
+.footer-text {
+ margin-top: 32px;
+ font-size: 9px;
+ font-weight: 400;
+ letter-spacing: 0.22em;
+ text-transform: uppercase;
+ color: rgba(45,41,38,0.4);
+ text-align: center;
+}
+@media (max-width: 400px) {
+ .card, .rsvp-card { padding-left: 28px; padding-right: 28px; }
+}
+```
+</style>
+</head>
+<body>
+<!-- ARCH CARD -->
+<div class="card">
+<p class="hero-eyebrow">The Wedding Weekend of</p>
+<div class="hero-script">Alison</div>
+<span class="hero-amp">&</span>
+<div class="hero-script">Greg</div>
+<p class="hero-sub">Join us as we celebrate</p>
+<div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+<p class="events-heading">Your Weekend</p>
+<!-- Event 1 -->
+<div class="event-item">
+<div class="event-name">Friday 9th October · 7:00 pm</div>
+<div class="event-detail">
+     Private Dinner<br>
+     Mount Street Restaurant · Mayfair
+</div>
+<span class="event-tag">Transport provided</span>
+</div>
+<!-- Event 2 -->
+<div class="event-item">
+<div class="event-name">Saturday 10th · 1:00 pm</div>
+<div class="event-detail">
+     Wedding Ceremony<br>
+     Islington Town Hall · Room 99
+</div>
+<span class="event-tag">Transport provided</span>
+</div>
+<!-- Event 3 -->
+<div class="event-item">
+<div class="event-name">Saturday 10th · 4:00 pm — 2:00 am</div>
+<div class="event-detail">
+     Wedding Reception<br>
+     The Apartment · The Hoxton, Holborn · WC1V 7BD
+</div>
+</div>
+<!-- Event 4 -->
+<div class="event-item">
+<div class="event-name">Sunday 11th October</div>
+<div class="event-detail">
+     The Morning After<br>
+     Private Brunch · The Hoxton, Holborn
+</div>
+</div>
+</div><!-- /card -->
+<!-- RSVP SECTION -->
+<div class="rsvp-section">
+<div class="rsvp-card">
+```
+<div class="rsvp-script">Are you in?</div>
+<p class="rsvp-sub">Please Respond</p>
+<form id="rsvpForm">
+<div class="field-row">
+<p class="form-section-label">Guest One</p>
+<input type="text" id="g1name" placeholder="Full Name" required />
+</div>
+<div class="field-row">
+<p class="form-section-label">Guest Two <span style="font-weight:300; text-transform:none; letter-spacing:0; font-size:10px; color:var(--light);">(if applicable)</span></p>
+<input type="text" id="g2name" placeholder="Full Name" />
+</div>
+<div class="divider" style="margin: 28px 0 8px;"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+<p class="form-section-label" style="text-align:center; margin-top:20px;">Attending?</p>
+<div class="radio-group">
+<input type="radio" name="attending" id="att_yes" value="yes" required />
+<label for="att_yes">Joyfully Accepts</label>
+<input type="radio" name="attending" id="att_no" value="no" />
+<label for="att_no">Regretfully Declines</label>
+</div>
+<div style="margin-top: 24px;">
+<p class="form-section-label" style="text-align:left;">Anything we should know?</p>
+<textarea id="notes" placeholder="Dietary requirements, questions, or anything else…"></textarea>
+</div>
+<div class="divider" style="margin: 28px 0 8px;"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+<p class="form-section-label" style="text-align:center; margin-top:20px;">Room at The Hoxton?</p>
+<p style="font-size:12px; font-weight:300; color:var(--mid); margin-bottom:12px; letter-spacing:0.02em;">Friday 9th &amp; Saturday 10th October</p>
+<div class="radio-group">
+<input type="radio" name="room" id="room_yes" value="yes" />
+<label for="room_yes">Yes please</label>
+<input type="radio" name="room" id="room_no" value="no" />
+<label for="room_no">No thank you</label>
+</div>
+<button type="submit" class="submit-btn" id="submitBtn">Send My RSVP</button>
+</form>
+<div id="thankyou">
+<div class="ty-script">Thank you!</div>
+<p>Your RSVP has been received.<br>We can't wait to celebrate with you.</p>
+</div>
+```
+</div>
+</div>
+<p class="footer-text">Alison &amp; Greg &nbsp;·&nbsp; 10 · 10 · 2026</p>
+<script>
+ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyDsKhRjaX_vvap-NKItQiz1Y2OG4cCdJ51lt7HLm3s5QkcL3UL-IQ2-mUVi1mjv87Mnw/exec';
+ document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+   e.preventDefault();
+   const btn = document.getElementById('submitBtn');
+   btn.disabled = true;
+   btn.textContent = 'Sending…';
+   const params = new URLSearchParams(window.location.search);
+   const invite = params.get('invite') || 'unknown';
+   const data = {
+     form_type: 'vip',
+     invite,
+     timestamp: new Date().toISOString(),
+     g1_name:   document.getElementById('g1name').value,
+     g2_name:   document.getElementById('g2name').value,
+     attending: document.querySelector('input[name="attending"]:checked')?.value || '',
+     room:      document.querySelector('input[name="room"]:checked')?.value || '',
+     notes:     document.getElementById('notes').value,
+   };
+   try {
+     if (SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+       await fetch(SHEET_URL, {
+         method: 'POST',
+         mode: 'no-cors',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(data),
+       });
+     }
+   } catch(err) {
+     console.warn('Submission error:', err);
+   }
+   document.getElementById('rsvpForm').style.display = 'none';
+   document.getElementById('thankyou').classList.add('visible');
+ });
+</script>
+</body>
+</html>
